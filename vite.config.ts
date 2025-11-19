@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -10,6 +9,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
+  // Development server (localhost only)
   server: {
     port: 5173,
     proxy: {
@@ -19,9 +20,17 @@ export default defineConfig({
       },
     },
   },
+
+  // THIS IS THE IMPORTANT PART FOR RENDER
   preview: {
-    port: process.env.PORT ? parseInt(process.env.PORT) : 4173,
+    port: Number(process.env.PORT) || 4173,
     host: true,
-    https://chamahub-uwvc.onrender.com,
+    // Allow Render's onrender.com subdomain + any custom domain you might add later
+    allowedHosts: [
+      'chamahub-uwvc.onrender.com',   // ← your current URL
+      '.onrender.com',                // ← allows ALL *.onrender.com (recommended)
+      'localhost',
+      '127.0.0.1',
+    ],
   },
 })
