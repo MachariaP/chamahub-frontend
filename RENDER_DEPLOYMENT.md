@@ -35,7 +35,7 @@ This guide will help you deploy the ChamaHub frontend application to [Render](ht
    - **Name:** `chamahub-frontend` (or your preferred name)
    - **Runtime:** `Node`
    - **Build Command:** `npm install && npm run build`
-   - **Start Command:** `npm run preview -- --host 0.0.0.0 --port $PORT`
+   - **Start Command:** `npm start`
    - **Instance Type:** Free (or choose based on your needs)
 
 3. **Add environment variables:**
@@ -83,10 +83,10 @@ The application is configured with the following build settings:
   - Compiles TypeScript
   - Builds optimized production bundle using Vite
 
-- **Start Command:** `npm run preview -- --host 0.0.0.0 --port $PORT`
-  - Serves the built static files
+- **Start Command:** `npm start`
+  - Serves the built static files using Vite preview server
   - Listens on all network interfaces (0.0.0.0)
-  - Uses the PORT environment variable provided by Render
+  - Uses the PORT environment variable provided by Render (defaults to 4173 locally)
 
 ## Troubleshooting
 
